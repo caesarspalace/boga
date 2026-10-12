@@ -12,3 +12,11 @@
 
 pkg/
 src/
+target/
+# Archivos de compilación y empaquetados
+/target/
+*.deb
+
+# SDKs externos y dependencias locales
+/javafx-sdk-*/
+.DS_Store
