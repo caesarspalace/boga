@@ -29,3 +29,13 @@ Diseña tus plantillas estándar en Microsoft Word o LibreOffice utilizando las 
 Utilizadas para insertar valores de texto directo:
 ```text
 Por la presente, el Sr./Sra. ${COMPRADOR_NOMBRE}, DNI N° ${COMPRADOR_CEDULA}, adquiere el inmueble...
+
+---
+
+## ☕ Apoya el Proyecto
+
+Si esta herramienta te ha sido útil para optimizar tu trabajo notarial o desarrollo, considera apoyar su mantenimiento y evolución con una donación:
+
+* **Cuenta / Alias de donación:** `brea69`
+
+¡Muchas gracias por tu colaboración!
