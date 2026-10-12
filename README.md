@@ -37,5 +37,6 @@ Por la presente, el Sr./Sra. ${COMPRADOR_NOMBRE}, DNI N° ${COMPRADOR_CEDULA}, a
 Si esta herramienta te ha sido útil para optimizar tu trabajo notarial o desarrollo, considera apoyar su mantenimiento y evolución con una donación:
 
 * **Cuenta / Alias de donación:** `brea69`
+* **Cuenta / Alias de donación:** `sonaja.organo.telar`
 
 ¡Muchas gracias por tu colaboración!
