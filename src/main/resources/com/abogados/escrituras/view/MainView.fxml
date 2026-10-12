@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.abogados.escrituras.controller.MainController"
+      prefHeight="700.0" prefWidth="950.0"
+      stylesheets="@../styles/styles.css">
+
+    <TabPane fx:id="mainTabPane" tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS">
+        <tabs>
+            <!-- Pestaña 1: Generación de Escrituras / Plantillas -->
+            <Tab fx:id="tabTemplateManager" text="📄 Generador de Escrituras">
+                <content>
+                    <fx:include fx:id="templateManager" source="TemplateManagerView.fxml" />
+                </content>
+            </Tab>
+
+            <!-- Pestaña 2: Registro de Identidades y Serialización Local -->
+            <Tab text="👤 Registro de Identidades">
+                <content>
+                    <fx:include source="ModuloIdentidadView.fxml" />
+                </content>
+            </Tab>
+
+            <!-- Pestaña 3: Bitácora e Historial de Escrituras Emitidas -->
+            <Tab fx:id="tabHistorial" text="📜 Historial de Escrituras">
+                <content>
+                    <fx:include fx:id="historialView" source="CatalogoHistorialView.fxml" />
+                </content>
+            </Tab>
+        </tabs>
+    </TabPane>
+</VBox>

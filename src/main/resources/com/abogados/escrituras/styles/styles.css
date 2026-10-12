@@ -1,0 +1,157 @@
+/* ==========================================================================
+   ESTILOS PRINCIPALES - HIGH CONTRAST (BLACK BACKGROUND & CYAN/GOLD LABELS)
+   ========================================================================== */
+
+.root {
+    -fx-font-family: 'Segoe UI', Helvetica, Arial, sans-serif;
+    -fx-font-size: 14px;
+    
+    /* Paleta de Fondo Negro Puro y Alto Contraste */
+    -bg-dark: #000000;              /* Fondo principal NEGRO PURO */
+    -card-bg: #0F172A;             /* Fondo de tarjetas en azul noche muy oscuro */
+    -card-border: #334155;         /* Bordes visibles para separar secciones */
+    
+    /* Colores de Etiquetas (Labels) - Alternativos al Blanco */
+    -label-primary: #38BDF8;       /* Cyan / Azul celeste brillante para títulos y campos */
+    -label-secondary: #F1F5F9;     /* Texto secundario de alta legibilidad */
+    -text-muted: #94A3B8;          /* Placeholders y descripciones */
+    
+    /* Campos de Entrada de Texto */
+    -input-bg: #050B14;            /* Fondo de inputs casi negro */
+    -input-border: #475569;        /* Borde nítido */
+    -input-focus: #F59E0B;         /* Enfoque en Dorado/Ámbar para resaltar */
+    
+    /* Botones */
+    -primary-color: #2563EB;       /* Azul Primario Intenso */
+    -primary-hover: #1D4ED8;
+    -accent-gold: #F59E0B;          /* Dorado de resalte */
+    -accent-hover: #D97706;
+}
+
+/* Base de la aplicación en Negro Puro */
+.vbox, .hbox, .anchor-pane, .scroll-pane {
+    -fx-background-color: -bg-dark;
+}
+
+/* ==========================================================================
+   ENCABEZADOS Y ETIQUETAS (COLOR CYAN / CELESTE DE ALTO CONTRASTE)
+   ========================================================================== */
+
+.main-header {
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #F59E0B;        /* Título principal en Dorado/Ámbar */
+    -fx-padding: 0 0 5 0;
+}
+
+.status-label {
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #FFFFFF;
+    -fx-padding: 6 12 6 12;
+    -fx-background-color: #1E3A8A; /* Azul noche para resaltar avisos */
+    -fx-background-radius: 4px;
+    -fx-border-color: #3B82F6;
+    -fx-border-width: 1px;
+    -fx-border-radius: 4px;
+}
+
+/* Nombres de los campos (Cédula, Nombre, etc.) en Cyan brillante */
+.label-field-name {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -label-primary;  /* #38BDF8 - Azul Celeste / Cyan */
+}
+
+/* ==========================================================================
+   TARJETAS Y PANELES CONTENEDORES (CARDS)
+   ========================================================================== */
+
+.card-panel {
+    -fx-background-color: -card-bg;
+    -fx-border-color: -card-border;
+    -fx-border-width: 1.5px;
+    -fx-border-radius: 8px;
+    -fx-background-radius: 8px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 4);
+}
+
+/* ==========================================================================
+   CAMPOS DE TEXTO (TEXTFIELDS)
+   ========================================================================== */
+
+.text-field {
+    -fx-background-color: -input-bg;
+    -fx-text-fill: #FFFFFF;
+    -fx-prompt-text-fill: -text-muted;
+    -fx-border-color: -input-border;
+    -fx-border-width: 1.5px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-padding: 8px 12px;
+    -fx-font-size: 14px;
+}
+
+.text-field:focused {
+    -fx-border-color: -input-focus;
+    -fx-border-width: 2px;
+    -fx-effect: dropshadow(three-pass-box, rgba(245, 158, 11, 0.4), 6, 0, 0, 0);
+}
+
+/* ==========================================================================
+   BOTONES
+   ========================================================================== */
+
+/* Botón Primario (Guardar / Procesar) */
+.button-primary {
+    -fx-background-color: -primary-color;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+    -fx-padding: 8px 18px;
+    -fx-background-radius: 6px;
+    -fx-border-color: #60A5FA;
+    -fx-border-width: 1px;
+    -fx-border-radius: 6px;
+    -fx-cursor: hand;
+}
+
+.button-primary:hover {
+    -fx-background-color: -primary-hover;
+}
+
+/* Botón Secundario (Buscar / Limpiar) */
+.button-secondary {
+    -fx-background-color: #1E293B;
+    -fx-text-fill: -label-primary;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+    -fx-padding: 8px 16px;
+    -fx-background-radius: 6px;
+    -fx-border-color: #38BDF8;
+    -fx-border-width: 1px;
+    -fx-border-radius: 6px;
+    -fx-cursor: hand;
+}
+
+.button-secondary:hover {
+    -fx-background-color: #334155;
+}
+
+/* Botón Dorado de Resalte */
+.button-accent {
+    -fx-background-color: -accent-gold;
+    -fx-text-fill: #000000;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+    -fx-padding: 8px 18px;
+    -fx-background-radius: 6px;
+    -fx-border-color: #FCD34D;
+    -fx-border-width: 1px;
+    -fx-border-radius: 6px;
+    -fx-cursor: hand;
+}
+
+.button-accent:hover {
+    -fx-background-color: -accent-hover;
+}

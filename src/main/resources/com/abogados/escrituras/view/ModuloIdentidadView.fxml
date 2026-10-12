@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox spacing="15.0" stylesheets="@../styles/styles.css"
+      xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.abogados.escrituras.controller.ModuloIdentidadController">
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+    <Label text="Gestión de Identidades (Comparecientes)" styleClass="main-header"/>
+    <Label fx:id="lblEstado" text="Ingrese el número de cédula para buscar o registrar una persona." styleClass="status-label"/>
+
+    <VBox spacing="12" styleClass="card-panel">
+        <padding>
+            <Insets top="15" right="15" bottom="15" left="15"/>
+        </padding>
+
+        <GridPane hgap="15" vgap="12">
+            <columnConstraints>
+                <ColumnConstraints prefWidth="180.0" />
+                <ColumnConstraints hgrow="ALWAYS" />
+            </columnConstraints>
+
+            <!-- Cédula y Búsqueda -->
+            <Label text="Cédula / Identificación:" GridPane.rowIndex="0" GridPane.columnIndex="0" styleClass="label-field-name"/>
+            <HBox spacing="10" GridPane.rowIndex="0" GridPane.columnIndex="1">
+                <TextField fx:id="txtIdentificacion" promptText="Ej: 101110222" HBox.hgrow="ALWAYS"/>
+                <Button text="🔍 Buscar" onAction="#handleBuscarPersona" styleClass="button-secondary"/>
+            </HBox>
+
+            <!-- Nombre Completo -->
+            <Label text="Nombre Completo:" GridPane.rowIndex="1" GridPane.columnIndex="0" styleClass="label-field-name"/>
+            <TextField fx:id="txtNombreCompleto" promptText="Nombre y apellidos completoss" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+            <!-- Estado Civil -->
+            <Label text="Estado Civil:" GridPane.rowIndex="2" GridPane.columnIndex="0" styleClass="label-field-name"/>
+            <TextField fx:id="txtEstadoCivil" promptText="Soltero(a), Casado(a), Divorciado(a)" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+
+            <!-- Nombre del Cónyuge -->
+            <Label text="Nombre del Cónyuge:" GridPane.rowIndex="3" GridPane.columnIndex="0" styleClass="label-field-name"/>
+            <TextField fx:id="txtNombreConyuge" promptText="Nombre completo del esposo/esposa (si aplica)" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+
+            <!-- Ocupación -->
+            <Label text="Ocupación / Profesión:" GridPane.rowIndex="4" GridPane.columnIndex="0" styleClass="label-field-name"/>
+            <TextField fx:id="txtOcupacion" promptText="Ej: Ingeniero, Abogado, Empresario" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+
+            <!-- Teléfono -->
+            <Label text="Teléfono de Contacto:" GridPane.rowIndex="5" GridPane.columnIndex="0" styleClass="label-field-name"/>
+            <TextField fx:id="txtTelefono" promptText="Ej: 88889999" GridPane.rowIndex="5" GridPane.columnIndex="1"/>
+
+            <!-- Domicilio -->
+            <Label text="Domicilio / Dirección:" GridPane.rowIndex="6" GridPane.columnIndex="0" styleClass="label-field-name"/>
+            <TextField fx:id="txtDomicilio" promptText="Provincia, Cantón, Distrito y otras señas" GridPane.rowIndex="6" GridPane.columnIndex="1"/>
+        </GridPane>
+
+        <HBox spacing="10" alignment="CENTER_RIGHT">
+            <Button text="Limpiar" onAction="#handleLimpiar" styleClass="button-secondary"/>
+            <Button text="💾 Guardar Persona" onAction="#handleGuardarPersona" styleClass="button-primary"/>
+        </HBox>
+    </VBox>
+</VBox>

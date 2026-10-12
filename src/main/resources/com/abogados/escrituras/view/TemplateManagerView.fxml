@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox spacing="15.0" stylesheets="@../styles/styles.css"
+      xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.abogados.escrituras.controller.TemplateManagerController">
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+    <!-- Título del Módulo -->
+    <Label text="Generador de Escrituras Legales" styleClass="main-header"/>
+    <Label fx:id="lblEstado" text="Seleccione una plantilla Word (.docx) para comenzar." styleClass="status-label"/>
+
+    <!-- Panel Superior: Carga de Archivo -->
+    <HBox spacing="12" alignment="CENTER_LEFT" styleClass="card-panel">
+        <padding>
+            <Insets top="15" right="15" bottom="15" left="15"/>
+        </padding>
+        <Button fx:id="btnSeleccionarPlantilla" text="📁 Cargar Plantilla (.docx)" onAction="#handleCargarPlantilla" styleClass="button-primary"/>
+        <Button fx:id="btnCvsSeleccionarPlantilla" text="📁 Cargar CVS" onAction="#handleGeneracionMasivaCsv" styleClass="button-primary"/>
+    </HBox>
+
+    <!-- Contenedor con Scroll para los Campos Dinámicos -->
+    <ScrollPane fitToWidth="true" VBox.vgrow="ALWAYS" styleClass="card-panel">
+        <content>
+            <VBox spacing="12">
+                <padding>
+                    <Insets top="15" right="15" bottom="15" left="15"/>
+                </padding>
+                <Label text="Variables Detectadas en el Documento" styleClass="section-header"/>
+                <Separator/>
+                <GridPane fx:id="gridCamposDinamicos" hgap="15" vgap="12">
+                    <columnConstraints>
+                        <ColumnConstraints prefWidth="200.0" />
+                        <ColumnConstraints hgrow="ALWAYS" />
+                    </columnConstraints>
+                </GridPane>
+            </VBox>
+        </content>
+    </ScrollPane>
+
+    <!-- Barra de Acciones Inferior -->
+    <HBox alignment="CENTER_RIGHT" spacing="12">
+        <Button fx:id="btnGenerarEscritura" text="⚡ Generar Escritura Final" onAction="#handleGenerarEscritura" styleClass="button-primary"/>
+    </HBox>
+</VBox>

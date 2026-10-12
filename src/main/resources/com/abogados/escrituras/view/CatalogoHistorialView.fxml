@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox spacing="15.0" stylesheets="@../styles/styles.css"
+      xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.abogados.escrituras.controller.CatalogoHistorialController">
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+    <Label text="Catálogo de Plantillas e Historial de Escrituras" styleClass="main-header"/>
+
+    <!-- PANELES DIVIDIDOS EN TAB -->
+    <TabPane tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS">
+        
+        <!-- Pestaña 1: Catálogo de Plantillas -->
+        <Tab text="📁 Catálogo de Plantillas">
+            <VBox spacing="15" styleClass="card-panel">
+                <padding><Insets top="15" right="15" bottom="15" left="15"/></padding>
+                
+                <GridPane hgap="15" vgap="10">
+                    <Label text="Seleccionar Documento (.docx):" GridPane.rowIndex="0" GridPane.columnIndex="0" styleClass="label-field-name"/>
+                    <HBox spacing="10" GridPane.rowIndex="0" GridPane.columnIndex="1">
+                        <Button text="📂 Examinar..." onAction="#handleSeleccionarArchivo" styleClass="button-secondary"/>
+                        <Label fx:id="lblRutaPlantilla" text="No se ha seleccionado archivo." styleClass="label-field-name"/>
+                    </HBox>
+
+                    <Label text="Nombre de la Plantilla:" GridPane.rowIndex="1" GridPane.columnIndex="0" styleClass="label-field-name"/>
+                    <TextField fx:id="txtNombrePlantilla" promptText="Ej: Contrato de Arrendamiento Urbano" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+                    <Label text="Categoría:" GridPane.rowIndex="2" GridPane.columnIndex="0" styleClass="label-field-name"/>
+                    <ComboBox fx:id="cbCategoria" promptText="Seleccione categoría" GridPane.rowIndex="2" GridPane.columnIndex="1" maxWidth="Infinity"/>
+                </GridPane>
+
+                <HBox alignment="CENTER_RIGHT">
+                    <Button text="➕ Agregar al Catálogo" onAction="#handleRegistrarPlantilla" styleClass="button-primary"/>
+                </HBox>
+
+                <Separator/>
+
+                <Label text="Plantillas Disponibles en el Sistema:" styleClass="label-field-name"/>
+                <ListView fx:id="listPlantillas" VBox.vgrow="ALWAYS" prefHeight="180"/>
+            </VBox>
+        </Tab>
+
+        <!-- Pestaña 2: Bitácora / Historial de Generación -->
+        <Tab text="📜 Historial de Escrituras Emitidas">
+            <VBox spacing="10" styleClass="card-panel">
+                <padding><Insets top="15" right="15" bottom="15" left="15"/></padding>
+
+                <TableView fx:id="tableHistorial" VBox.vgrow="ALWAYS">
+                    <columns>
+                        <TableColumn fx:id="colFecha" text="Fecha y Hora" prefWidth="160"/>
+                        <TableColumn fx:id="colPlantilla" text="Plantilla" prefWidth="200"/>
+                        <TableColumn fx:id="colCliente" text="Cliente / Compareciente" prefWidth="180"/>
+                        <TableColumn fx:id="colRuta" text="Archivo Generado" prefWidth="280"/>
+                    </columns>
+                </TableView>
+            </VBox>
+        </Tab>
+    </TabPane>
+</VBox>
