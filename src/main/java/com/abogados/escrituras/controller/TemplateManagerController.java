@@ -217,14 +217,15 @@ public class TemplateManagerController {
     private void registrarEnHistorial(File archivoDestino, Map<String, String> valoresVariables) {
         try {
             String fechaActual = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
-            
+            String clientePrincipal = "Cargado por CSV";
+            if (valoresVariables != null){
             // Intenta extraer el nombre del cliente/compareciente si existe un campo NOMBRE_*
-            String clientePrincipal = valoresVariables.entrySet().stream()
+             clientePrincipal = valoresVariables.entrySet().stream()
                     .filter(e -> e.getKey().startsWith("NOMBRE_") && e.getValue() != null && !e.getValue().isBlank())
                     .map(Map.Entry::getValue)
                     .findFirst()
                     .orElse("Cliente No Especificado");
-
+            }
             HistorialRegistroDTO registro = new HistorialRegistroDTO(
                     UUID.randomUUID().toString(),
                     fechaActual,
@@ -277,6 +278,7 @@ public class TemplateManagerController {
             DocumentProcessor processor = new DocumentProcessor();
             
             int totalGenerados = processor.procesarLotesCsv(archivoPlantillaSeleccionada, carpetaSalida, registros, "Escritura");
+             registrarEnHistorial(carpetaSalida, null);
 
             mostrarAlerta(Alert.AlertType.INFORMATION, "Generación Masiva Exitosa", 
                     "Se han generado exitosamente " + totalGenerados + " de " + registros.size() + " documentos.\nGuardados en: " + carpetaSalida.getAbsolutePath());
