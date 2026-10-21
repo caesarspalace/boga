@@ -17,6 +17,8 @@
 package com.abogados.escrituras.controller;
 
 import com.abogados.escrituras.model.PlantillaDTO;
+import com.abogados.escrituras.service.MetricsService;
+import com.abogados.escrituras.ui.MetricsView;
 import javafx.fxml.FXML;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
@@ -42,6 +44,9 @@ public class MainController {
                 }
             });
         }
+        Tab tabMetricas = new Tab("Métricas & Estadísticas");
+        tabMetricas.setContent(new MetricsView(new MetricsService()));
+        mainTabPane.getTabs().add(tabMetricas);
     }
     
     private void alSeleccionarPlantilla(PlantillaDTO plantilla) {

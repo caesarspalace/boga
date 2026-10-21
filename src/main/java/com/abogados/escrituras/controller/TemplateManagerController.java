@@ -23,6 +23,8 @@ import com.abogados.escrituras.service.AutoFillService;
 import com.abogados.escrituras.service.DocumentProcessor;
 import com.abogados.escrituras.service.HistorialRepository;
 import com.abogados.escrituras.service.LocalPersonaRepository;
+import com.abogados.escrituras.service.MetricsService;
+import com.abogados.escrituras.ui.MetricsView;
 import com.abogados.escrituras.util.EnigmaReload;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -42,7 +44,7 @@ public class TemplateManagerController {
     @FXML private GridPane gridCamposDinamicos;
     @FXML private Label lblEstado;
     @FXML private Button btnGenerarEscritura;
-
+    
     private final Map<String, TextField> mapaCamposUI = new HashMap<>();
     private final LocalPersonaRepository personaRepository = new LocalPersonaRepository();
     private final DocumentProcessor documentProcessor = new DocumentProcessor();
@@ -51,7 +53,7 @@ public class TemplateManagerController {
     private File archivoPlantillaSeleccionada;
     private PlantillaDTO plantillaActual;
     private EnigmaReload er = new EnigmaReload(8746578493L);;
-    
+    private MetricsService metricsService = new MetricsService();       
     @FXML
     public void initialize() {
         btnGenerarEscritura.setDisable(true);
@@ -198,7 +200,7 @@ public class TemplateManagerController {
             if (exito) {
                 // REGISTRO EN EL HISTORIAL ENCRIPTADO (ENIGMARELOAD)
                 registrarEnHistorial(archivoDestino, valoresVariables);
-
+                metricsService.registrarGeneracion(archivoPlantillaSeleccionada.getName(), 1, false);
                 mostrarAlerta(
                     Alert.AlertType.INFORMATION,
                     "Escritura Generada",
@@ -278,8 +280,8 @@ public class TemplateManagerController {
             DocumentProcessor processor = new DocumentProcessor();
             
             int totalGenerados = processor.procesarLotesCsv(archivoPlantillaSeleccionada, carpetaSalida, registros, "Escritura");
-             registrarEnHistorial(carpetaSalida, null);
-
+            registrarEnHistorial(carpetaSalida, null);
+            metricsService.registrarGeneracion(archivoPlantillaSeleccionada.getName(), totalGenerados, true);
             mostrarAlerta(Alert.AlertType.INFORMATION, "Generación Masiva Exitosa", 
                     "Se han generado exitosamente " + totalGenerados + " de " + registros.size() + " documentos.\nGuardados en: " + carpetaSalida.getAbsolutePath());
 

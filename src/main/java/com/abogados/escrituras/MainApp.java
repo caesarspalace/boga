@@ -17,6 +17,8 @@
 package com.abogados.escrituras;
 
 import com.abogados.escrituras.service.LicenciaService;
+import com.abogados.escrituras.service.MetricsService;
+import com.abogados.escrituras.ui.MetricsView;
 import com.sun.javafx.scene.control.Properties;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -26,6 +28,7 @@ import javafx.stage.Stage;
 import java.net.URL;
 import java.util.Locale;
 import java.util.ResourceBundle;
+import javafx.scene.control.Tab;
 
 public class MainApp extends Application {
 
@@ -50,6 +53,7 @@ public class MainApp extends Application {
 
             // 2. Cargar el ResourceBundle correspondiente (e.g. messages_es_CR.properties o messages_es_AR.properties)
         ResourceBundle bundle = ResourceBundle.getBundle("messages", nuevoLocale);
+
         try {
             URL fxmlUrl = getClass().getResource("/com/abogados/escrituras/view/MainView.fxml");
             if (fxmlUrl == null) {
